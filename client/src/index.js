@@ -1,12 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import CssBaseline from '@material-ui/core/CssBaseline'
+import Login from './components/Login';
+import Profile from './components/Profile';
+import {
+  BrowserRouter as Router,
+  Route,
+} from "react-router-dom";
+import NavBar from './components/NavBar'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CssBaseline />
+    <Router>
+      <div>
+        <Route exact path="/">
+          <Login />
+        </Route>
+        <Route exact path="/uwvr">
+          <NavBar />
+          <Profile />
+        </Route>
+      </div>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
