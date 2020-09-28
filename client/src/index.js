@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import CssBaseline from '@material-ui/core/CssBaseline'
+import { createMuiTheme } from '@material-ui/core/styles';
 import Login from './components/Login';
 import Profile from './components/Profile';
 import {
@@ -10,21 +11,31 @@ import {
   Route,
 } from "react-router-dom";
 import NavBar from './components/NavBar'
+import { ThemeProvider } from '@material-ui/core';
+
+const darkTheme = createMuiTheme({
+  palette: {
+    type: 'dark'
+  }
+})
 
 ReactDOM.render(
   <React.StrictMode>
-    <CssBaseline />
-    <Router>
-      <div>
-        <Route exact path="/">
-          <Login />
-        </Route>
-        <Route exact path="/uwvr">
-          <NavBar />
-          <Profile />
-        </Route>
-      </div>
-    </Router>
+    <ThemeProvider theme={darkTheme}>
+
+      <CssBaseline />
+      <Router>
+        <div>
+          <Route exact path="/">
+            <Login />
+          </Route>
+          <Route exact path="/uwvr">
+            <NavBar />
+            <Profile />
+          </Route>
+        </div>
+      </Router>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
