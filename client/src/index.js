@@ -4,13 +4,14 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { createMuiTheme } from '@material-ui/core/styles';
-import Login from './components/Login';
 import Profile from './components/Profile';
+import Landing from './components/Landing';
+import Register from './components/Register';
+import Login from './components/Login';
 import {
   BrowserRouter as Router,
   Route,
 } from "react-router-dom";
-import NavBar from './components/NavBar'
 import { ThemeProvider } from '@material-ui/core';
 
 const darkTheme = createMuiTheme({
@@ -25,14 +26,10 @@ ReactDOM.render(
 
       <CssBaseline />
       <Router>
-        <div>
-          <Route exact path="/">
-            <Login />
-          </Route>
-          <Route exact path="/uwvr">
-            <NavBar />
-            <Profile />
-          </Route>
+        <div className="App">
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
         </div>
       </Router>
     </ThemeProvider>

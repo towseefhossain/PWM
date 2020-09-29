@@ -4,12 +4,12 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 import FormControl from '@material-ui/core/FormControl';
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { FormHelperText, InputLabel, MenuItem, Select } from '@material-ui/core';
 
 const useStyles = (theme) => ({
     formControl: {
@@ -43,7 +43,7 @@ const useStyles = (theme) => ({
 });
 
 
-class Login extends React.Component {
+class Register extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -73,19 +73,24 @@ class Login extends React.Component {
                         Waterloo Clubs PWM
         </Typography>
                     <FormControl className={classes.formControl}>
-                        <InputLabel id="clubsListLabel">Club</InputLabel>
-                        <Select
-                            labelId="clubsListLabel"
-                            id="clubsList"
-                            value={this.state.selectedClub}
-                            onChange={this.handleChange}
-                        >
-                            {this.state.clubs && this.state.clubs.map(club =>
-                                (
-                                    <MenuItem value={club}>{club.name}</MenuItem>
-                                ))}
-                        </Select>
-                        <FormHelperText>Select your club</FormHelperText>
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="clubname"
+                            label="Club Name"
+                            id="clubname"
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="clubemail"
+                            label="Club Email"
+                            id="clubname"
+                        />
                         <TextField
                             variant="outlined"
                             margin="normal"
@@ -104,12 +109,12 @@ class Login extends React.Component {
                             color="primary"
                             className={classes.submit}
                         >
-                            Sign In
+                            Sign Up
           </Button>
                         <Grid container justify="center">
                             <Grid item>
-                                <Link to="/register" className={classes.link}>
-                                    {"Sign Up"}
+                                <Link to="/login" className={classes.link}>
+                                    {"Sign In"}
                                 </Link>
                             </Grid>
                         </Grid>
@@ -120,4 +125,4 @@ class Login extends React.Component {
     }
 }
 
-export default withStyles(useStyles)(Login)
+export default withStyles(useStyles)(Register)
